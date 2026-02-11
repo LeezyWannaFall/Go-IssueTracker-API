@@ -1,8 +1,8 @@
 package model
 
 type Issue struct {
-	ID          int
-	Title       string
-	Description string
-	Status      string
+	ID          int `json:"id"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Status      string `json:"status"`
 }
