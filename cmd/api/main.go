@@ -56,6 +56,8 @@ func main() {
 	r.Get("/issues", h.ListIssues)
 
 	// run server
-	log.Println("Server running on :8080")
-	log.Fatal(http.ListenAndServe(":8080", r))
+	addr := fmt.Sprintf(":%d", cfg.Server.Port)
+	
+	log.Printf("Server running on %s\n", addr)
+	log.Fatal(http.ListenAndServe(addr, r))
 }
