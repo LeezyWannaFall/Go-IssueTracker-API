@@ -22,25 +22,25 @@ Mini-product architecture: PostgreSQL, Go, chi router, layered structure.
 Go-IssueTracker-API
 ├── cmd
 │   └── api
-│       └── main.go # Entry point
-├── docker-compose.yml # Database container
+│       └── main.go            # Entry point
+├── docker-compose.yml         # Database container
 ├── go.mod
 ├── go.sum
 ├── internal
-│   ├── config # YAML configuration
+│   ├── config                 # YAML configuration
 │   │   ├── config.go
 │   │   └── config.yaml
-│   ├── handler # HTTP handlers
+│   ├── handler                # HTTP handlers
 │   │   └── handler.go
-│   ├── model # Data structures (Issue)
+│   ├── model                  # Data structures (Issue)
 │   │   └── model.go
-│   ├── repository # Repository interfaces and implementation
+│   ├── repository             # Repository interfaces and impl
 │   │   ├── postgres_repo.go
 │   │   └── repository.go
-│   └── service # Business logic
+│   └── service                # Business logic
 │       └── service.go
 ├── Makefile
-├── migrations # SQL migrations
+├── migrations                 # SQL migrations
 │   ├── 0001_create_issues_table.down.sql
 │   └── 0001_create_issues_table.up.sql
 └── README.md
