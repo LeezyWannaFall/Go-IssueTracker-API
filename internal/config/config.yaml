@@ -3,7 +3,7 @@ server:
 storage:
   postgres:
     host: "localhost"
-    port: 5432
+    port: 5433
     database: mydb
     user: task-service
     password: "123456789"

@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:15
+    container_name: issue_tracker_db
+    environment:
+      POSTGRES_USER: task-service
+      POSTGRES_PASSWORD: 123456789
+      POSTGRES_DB: mydb
+    ports:
+      - "5433:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
