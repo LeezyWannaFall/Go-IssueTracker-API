@@ -38,6 +38,12 @@ func (s *IssueService) GetIssueByID(ctx context.Context, id int) (*model.Issue, 
 }
 
 func (s *IssueService) UpdateIssue(ctx context.Context, issue *model.Issue) error {
+	if issue.Status != "open" &&
+	   issue.Status != "in_progress" &&
+	   issue.Status != "done" {
+		return errors.New("invalid status")
+	}
+	
 	return s.repo.UpdateIssue(ctx, issue)
 }
 
