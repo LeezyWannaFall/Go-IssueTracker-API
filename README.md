@@ -120,11 +120,11 @@ curl -X POST http://localhost:8080/issues -H "Content-Type: application/json" -d
 - Get an issue by ID
 
 ```bash
-curl -X GET http://localhost:8085/issues/1
+curl -X GET http://localhost:8080/issues/1
 ```
 or
 ```bash
-curl http://localhost:8085/issues/1
+curl http://localhost:8080/issues/1
 ```
 
 - Update an issue:
@@ -144,7 +144,7 @@ curl http://localhost:8080/issues
 ```
 or
 ```bash
-curl -X GET http://localhost:8085/issues
+curl -X GET http://localhost:8080/issues
 ```
 ## Notes
 
