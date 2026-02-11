@@ -24,12 +24,12 @@ Go-IssueTracker-API
 │   └── api
 │       └── main.go                        # Entry point
 ├── docker-compose.yml                     # Database container
+├── config.yaml
 ├── go.mod
 ├── go.sum
 ├── internal
-│   ├── config                             # YAML configuration
-│   │   ├── config.go
-│   │   └── config.yaml
+│   ├── config                             # Configuration functions
+│   │   └── config.go
 │   ├── handler                            # HTTP handlers
 │   │   └── handler.go
 │   ├── model                              # Data structures (Issue)

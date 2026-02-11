@@ -17,7 +17,7 @@ import (
 
 func main() {
 	// TODO: init config:
-	cfg, err := config.LoadConfig("internal/config/config.yaml")
+	cfg, err := config.LoadConfig("config.yaml")
 	if err != nil {
 		log.Fatal(err)
 	}
