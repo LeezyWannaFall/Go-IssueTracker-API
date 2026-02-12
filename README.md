@@ -50,17 +50,33 @@ Go-IssueTracker-API
 
 ## Setup
 
-### 1. Start PostgreSQL in Docker
+### 1. Configure config.yaml
 
-```bash
-docker-compose up -d
+```yaml
+server:
+  host: "0.0.0.0"
+  port: 8080
+
+storage:
+  postgres:
+    host: "db"
+    port: 5432
+    database: mydb
+    user: task-service
+    password: "123456789"
 ```
 
-- The database container will be accessible at localhost:5433
+- The server will listen at ```http://localhost:server-port-in-config.yaml```
+
+### 2. Start Docker Compose
+
+```bash
+docker-compose up --build
+```
 
 - Data will be persisted in the volume db_data
 
-### 2. Create the issues table
+### 3. Create the issues table
 
 ```bash
 docker exec -i issue_tracker_db psql -U task-service -d mydb < migrations/0001_create_issues_table.up.sql
@@ -76,28 +92,6 @@ CREATE TABLE IF NOT EXISTS issues (
     status TEXT NOT NULL DEFAULT 'open'
 );
 ```
-
-### 3. Configure config.yaml
-
-```yaml
-server:
-  port: 8080
-storage:
-  postgres:
-    host: "localhost"
-    port: 5432
-    database: mydb
-    user: task-service
-    password: "123456789"
-```
-
-### 4. Run the Go service
-
-```bash
-go run cmd/main.go
-```
-
-- The server will listen at ```http://localhost:server-port-in-config.yaml```
 
 ## API Endpoints
 
@@ -149,5 +143,3 @@ curl -X GET http://localhost:8080/issues
 ## Notes
 
 - IDs are auto-incremented via PostgreSQL SERIAL. After deleting an issue, new issues will continue incrementing IDs.
-
-- For local development, the Go service runs without Docker; the database runs in a container. In future Go service will be run with Docker container.
