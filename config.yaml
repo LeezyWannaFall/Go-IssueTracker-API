@@ -1,9 +1,11 @@
 server:
-   port: 8080
+  host: "0.0.0.0"
+  port: 8080
+
 storage:
   postgres:
-    host: "localhost"
-    port: 5433
+    host: "db"
+    port: 5432
     database: mydb
     user: task-service
     password: "123456789"
