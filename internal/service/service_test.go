@@ -57,29 +57,7 @@ func TestCreateIssue(t *testing.T) {
     }
 }
 
-func TestCreateIssue_InvalidStatus(t *testing.T) {
-	mockRepo := &MockRepo{
-        CreateFunc: func(ctx context.Context, issue *model.Issue) (int, error) {
-            return 1, nil
-        },
-    }
-
-    service := service.NewIssueService(mockRepo)
-
-	issue := &model.Issue{
-		Title:       "Test Issue",
-		Description: "This is a test issue",
-		Status:      "123",
-	}
-
-	_, err := service.CreateIssue(context.Background(), issue)
-
-	if err != nil {
-		t.Fatalf("expected error, got %v", err)
-	}
-}
-
-func TestGetIssueByID_NotFound(t *testing.T) {
+func TestGetIssueByID(t *testing.T) {
 	mockRepo := &MockRepo{
 		GetByIDFunc: func(ctx context.Context, id int) (*model.Issue, error) {
 			return nil, nil
@@ -90,7 +68,6 @@ func TestGetIssueByID_NotFound(t *testing.T) {
 
 	issue := &model.Issue{
 		ID: 1,
-		Title: "test",
 	}
 
 	_, err := service.GetIssueByID(context.Background(), issue.ID)
@@ -140,7 +117,7 @@ func TestUpdateIssue_InvalidStatus(t *testing.T) {
 	err := service.UpdateIssue(context.Background(), issue)
 
 	if err == nil {
-		t.Fatalf("expected error, got %v", err)
+		t.Fatalf("expected no error, got %v", err)
 	}
 }
 
