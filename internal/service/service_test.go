@@ -53,10 +53,10 @@ func TestCreateIssue(t *testing.T) {
 		Status:      "open",
 	}
 
-	id, err := service.CreateIssue(context.Background(), issue)
+	_, err := service.CreateIssue(context.Background(), issue)
 
     if err != nil {
-        t.Fatalf("expected no error, got %v", id)
+        t.Fatalf("expected no error, got %v", err)
     }
 
 	if !called {
