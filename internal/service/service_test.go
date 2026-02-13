@@ -60,20 +60,23 @@ func TestCreateIssue(t *testing.T) {
 func TestGetIssueByID(t *testing.T) {
 	mockRepo := &MockRepo{
 		GetByIDFunc: func(ctx context.Context, id int) (*model.Issue, error) {
-			return nil, nil
+			return &model.Issue{
+				ID: id,
+				Title: "test",	
+			}, nil
 		},
 	}
 
 	service := service.NewIssueService(mockRepo)
 
-	issue := &model.Issue{
-		ID: 1,
+	issue, err := service.GetIssueByID(context.Background(), 1)
+
+	if issue == nil {
+		t.Fatalf("expected issue, got nil")
 	}
 
-	_, err := service.GetIssueByID(context.Background(), issue.ID)
-
-	if err != nil {
-		t.Fatalf("expected no error, got %v", err)
+	if issue.ID != 1 {
+		t.Fatalf("expected ID 1, got %d", err)
 	}
 }
 
