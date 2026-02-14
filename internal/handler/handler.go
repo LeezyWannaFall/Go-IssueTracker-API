@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"Go-IssueTracker-API/internal/service"
 	"net/http"
 	"encoding/json"
 	"Go-IssueTracker-API/internal/model"
@@ -9,10 +8,10 @@ import (
 )
 
 type Handler struct {
-	issueService *service.IssueService
+	issueService IssueService
 }
 
-func NewHandler(issueService *service.IssueService) *Handler {
+func NewHandler(issueService IssueService) *Handler {
 	return &Handler{issueService: issueService}
 }
 

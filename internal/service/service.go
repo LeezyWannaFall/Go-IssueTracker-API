@@ -4,11 +4,10 @@ import (
     "context"
 	"errors"
     "Go-IssueTracker-API/internal/model"
-    "Go-IssueTracker-API/internal/repository"
 )
 
 type IssueService struct {
-    repo repository.IssueRepository
+    repo IssueRepository
 }
 
 /*
@@ -19,7 +18,7 @@ type IssueService struct {
 	5.ListIssues(ctx context.Context) ([]*model.Issue, error)
 */
 
-func NewIssueService(repo repository.IssueRepository) *IssueService {
+func NewIssueService(repo IssueRepository) *IssueService {
     return &IssueService{repo: repo}
 }
 

@@ -1,11 +1,11 @@
-package repository
+package handler
 
 import (
-	"Go-IssueTracker-API/internal/model"
 	"context"
+	"Go-IssueTracker-API/internal/model"
 )
 
-type IssueRepository interface {
+type IssueService interface {
 	CreateIssue(ctx context.Context, issue *model.Issue) (int, error)
 	GetIssueByID(ctx context.Context, id int) (*model.Issue, error)
 	UpdateIssue(ctx context.Context, issue *model.Issue) error
